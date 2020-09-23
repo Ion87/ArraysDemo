@@ -19,14 +19,31 @@ public class Main {
             c[a.length+i] = b[i];
         }
 
-        Arrays.sort(c);
+        //Arrays.sort(c);
+        int[] finalC = arange(c);
 
         int sumOfArray = 0;
-        for (int i:c
+        for (int i:finalC
              ) {
             sumOfArray+=i;
             System.out.print(i+" "); //for testing myself
         }
         System.out.print("\nsum of array is: "+sumOfArray);
+    }
+
+    public static int[] arange(int[] array){
+        boolean flag;
+        while (true) {
+            flag = true;
+            for (int i = 1; i < array.length; i++) {
+                if (array[i - 1] > array[i]) {
+                    flag = false;
+                    int temp = array[i - 1];
+                    array[i - 1] = array[i];
+                    array[i] = temp;
+                }
+            }
+            if (flag)return array;
+        }
     }
 }
